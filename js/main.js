@@ -12,10 +12,15 @@ let deckCount = 8;
 let cardsPassed = 0;
 
 let updateDisplays = (decks) =>{
-    console.log(parseInt(decks));
-    COUNTOUTPUT.innerHTML = count;
-    TRUECOUNTOUTPUT.innerHTML = count / decks;
-    DECKCOUNTOUTPUT.innerHTML = decks;
+    if(decks==='reset'){
+        COUNTOUTPUT.innerHTML = count;
+        TRUECOUNTOUTPUT.innerHTML = 0
+        DECKCOUNTOUTPUT.innerHTML = deckCount;
+    }else{
+        COUNTOUTPUT.innerHTML = count;
+        TRUECOUNTOUTPUT.innerHTML = (Math.round((count / decks) * 100) / 100).toFixed(2);
+        DECKCOUNTOUTPUT.innerHTML = decks;
+    }
 }
 
 let cardPassed = ()=>{
@@ -34,23 +39,35 @@ let cardPassed = ()=>{
 let increaseCount = ()=>{
     count++;
     cardPassed()
-    updateDisplays();
 }
 
 let decreaseCount = ()=>{
     count--;
     cardPassed()
-    updateDisplays();
 }
 
 let resetEverything = ()=>{
     count = 0;
     deckCount = 8;
     cardsPassed = 0;
-    updateDisplays();
+    updateDisplays('reset');
 }
 
 PLUSBTN.addEventListener('click', increaseCount);
 MINUSBTN.addEventListener('click', decreaseCount);
 ZEROBTN.addEventListener('click', cardPassed);
 RESETBTN.addEventListener('click', resetEverything);
+
+window.addEventListener('keyup', e => {
+    switch(e.code){
+        case 'NumpadAdd':
+            increaseCount();
+            break;
+        case 'NumpadSubtract':
+            decreaseCount();
+            break;
+        case 'Numpad0':
+            cardPassed();
+            break;
+    }
+})
