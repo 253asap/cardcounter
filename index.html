@@ -7,16 +7,31 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <div class="rules"><p>criteria</p></div>
+    <div class="rules">
+      <p>Press + on 2, 3, 4, 5, 6</p>
+      <p>Press - on 10, A</p>
+      <p>Press Zero on 7, 8, 9</p>
+    </div>
     <div class="count">
       <div class="count">
         <h1>Count</h1>
         <p id="count">0</p>
       </div>
+      <div class="trueCount">
+        <h1>True Count</h1>
+        <p id="trueCount">0</p>
+      </div>
+      <div class="deckCount">
+        <h1>Decks Left</h1>
+        <p id="deckCount">0</p>
+      </div>
     </div>
     <div class="controls">
-      <div class="btn">+</div>
-      <div class="btn">-</div>
+      <div class="btn" id="plusBtn">+</div>
+      <div class="btn" id="minusBtn">-</div>
+      <div class="btn" id="zeroBtn">Zero</div>
+      <div class="btn" id="resetBtn">Reset</div>
+      <input type="text" id="decksLeft" placeholder="Decks left" />
     </div>
     <script src="/js/main.js"></script>
   </body>
